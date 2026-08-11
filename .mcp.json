@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mamba-event-presence-index": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mambalabsdev/mcp-event-presence-index"
+      ],
+      "env": {
+        "APIFY_TOKEN": "your-apify-token"
+      }
+    }
+  }
+}
