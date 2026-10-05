@@ -1,0 +1,81 @@
+{
+  "_provenance": {
+    "actorId": "WLhMy8fMDgsxdYxv5",
+    "buildId": "SQvFxPHjs5ISG4Wrl",
+    "buildNumber": "0.0.20",
+    "readAt": "2026-10-05T15:41:13.703Z"
+  },
+  "title": "Event Presence Index",
+  "description": "Give it a company domain. It returns the third party conferences and trade shows that company publicly says it attends, with a year for each where one can be resolved. It finds events for roughly 2 companies in 10, and every event it returns is real.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "domain": {
+      "title": "Company domain",
+      "type": "string",
+      "description": "A single company domain, for example 6sense.com. Protocol and path are stripped.",
+      "editor": "textfield",
+      "prefill": "6sense.com",
+      "example": "6sense.com"
+    },
+    "company_name": {
+      "title": "Company name",
+      "type": "string",
+      "description": "Improves matching when the brand differs from the domain stem, for example Gong for gong.io. Derived from the domain when left empty.",
+      "editor": "textfield",
+      "prefill": "6sense",
+      "example": "6sense"
+    },
+    "years": {
+      "title": "Years to include",
+      "type": "string",
+      "description": "Comma separated, for example 2025,2026. Events dated outside this set are still returned and flagged. Sent as a string so it works from Clay.",
+      "editor": "textfield",
+      "default": "2025,2026",
+      "prefill": "2026",
+      "example": "2026"
+    },
+    "include_own_events": {
+      "title": "Include the company's own events",
+      "type": "boolean",
+      "description": "Reports whether the company runs its own conference as a separate field. It is never mixed into the attendance list.",
+      "editor": "checkbox",
+      "default": true,
+      "prefill": true
+    },
+    "max_queries": {
+      "title": "Max search queries",
+      "type": "string",
+      "description": "Between 1 and 5. Each query costs roughly 0.8 seconds plus a 1.3 second pause. 2 is the measured sweet spot: search engines refuse a third query from the same container almost every time, and the third query added no events the first two did not already find. Sent as a string so it works from Clay.",
+      "editor": "textfield",
+      "default": "2",
+      "prefill": "2",
+      "example": "2"
+    },
+    "skipCache": {
+      "title": "Skip the cache",
+      "type": "string",
+      "description": "false uses the 21 day result cache. true forces a fresh look.",
+      "editor": "select",
+      "enum": [
+        "false",
+        "true"
+      ],
+      "enumTitles": [
+        "false, use the cache",
+        "true, force fresh"
+      ],
+      "default": "false",
+      "prefill": "false"
+    },
+    "source_tag": {
+      "title": "Source Tag",
+      "type": "string",
+      "description": "Internal attribution tag set by Mamba Labs on published task examples. Not required, and nothing depends on it. Leave it empty.",
+      "editor": "hidden"
+    }
+  },
+  "required": [
+    "domain"
+  ]
+}

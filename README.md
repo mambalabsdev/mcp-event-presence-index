@@ -40,7 +40,7 @@ Company domain in, the events that company says it attends out.
 | `company_name` | string | no | Improves matching when the brand differs from the domain stem, for example Gong for gong.io. Derived from the domain when left empty. |
 | `years` | string | no | Comma separated, for example 2025,2026. Events dated outside this set are still returned and flagged. Sent as a string so it works from Clay. Default `2025,2026`. |
 | `include_own_events` | boolean | no | Reports whether the company runs its own conference as a separate field. It is never mixed into the attendance list. Default `true`. |
-| `max_queries` | string | no | Between 1 and 5. 2 is the measured sweet spot: search engines refuse a third query from the same container almost every time. Sent as a string so it works from Clay. Default `2`. |
+| `max_queries` | enum | no | `1` to `5`. 2 is the measured sweet spot: search engines refuse a third query from the same container almost every time. Sent as a string so it works from Clay. Default `2`. |
 | `skipCache` | enum | no | `false` uses the 21 day result cache, `true` forces a fresh look. Default `false`. |
 
 ## Reading the output
