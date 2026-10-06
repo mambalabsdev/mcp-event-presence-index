@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.3",
   "name": "mcp-event-presence-index",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MCP server for the Mamba Labs Event Presence Index actor on Apify. Company domain in, the third party conferences and trade shows that company publicly says it attends out, with a year for each.",
   "author": {
     "name": "Mamba Labs"
