@@ -42,6 +42,7 @@ Company domain in, the events that company says it attends out.
 | `include_own_events` | boolean | no | Reports whether the company runs its own conference as a separate field. It is never mixed into the attendance list. Default `true`. |
 | `max_queries` | enum | no | `1` to `5`. 2 is the measured sweet spot: search engines refuse a third query from the same container almost every time. Sent as a string so it works from Clay. Default `2`. |
 | `skipCache` | enum | no | `false` uses the 21 day result cache, `true` forces a fresh look. Default `false`. |
+| `max_charge_usd` | number | no | Optional cost cap in USD for this run. The actor stops before an item that could take its charges past this amount. Omit to rely on the maximum cost per run set in Apify. |
 
 ## Reading the output
 
@@ -52,6 +53,13 @@ Events dated outside the years you asked for are still returned and flagged, so 
 ## Billing
 
 You are charged per company analyzed, plus a small actor start fee. A repeat run inside the 21 day cache window costs nothing new.
+
+Price per event on the Apify FREE plan, from the live pricing record; paid Apify plans pay less per event.
+
+| Event | Price (USD) |
+| --- | --- |
+| Company analyzed (`company-analyzed`) | 0.005 |
+| Actor Start (`apify-actor-start`) | 0.00005 |
 
 Pricing is on the [actor's Apify page](https://apify.com/mambalabs/event-presence-index). Running this server consumes Apify credits.
 

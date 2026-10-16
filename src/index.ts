@@ -205,12 +205,13 @@ server.registerTool(
       "Give it a company domain. It returns the third party conferences and trade shows that company publicly says it attends, with a year for each where one can be resolved, as one flat row. The search runs against the company's own domain, which is what stops a brand collision returning another company's events. The company's own conference is reported separately and is never mixed into the attendance list. It finds events for roughly 2 companies in 10, and an empty row is an honest empty row rather than a guess: read coverage, fetch_status and queries_failed to tell a company with no published events apart from a search that could not see. This is not an events database and not an exhibitor list: it takes a company and reports what that company publishes. Use it to find a timely opener (a booth or a talk at a show you also attend) or to plan event based outreach. Requires an APIFY_TOKEN and consumes Apify credits.",
     annotations: {
       title: "Map Company Event Presence",
-      readOnlyHint: true,
+      readOnlyHint: false,
       destructiveHint: false,
       idempotentHint: true,
       openWorldHint: true,
     },
     inputSchema: {
+    max_charge_usd: z.number().min(0).optional().describe("Optional. The run stops before any charge that would take this run past this amount, and saves every row already paid for. Leave empty to rely only on the maximum cost per run set in Apify, which the run also honors."),
     domain: z.string().describe("A single company domain, for example 6sense.com. Protocol and path are stripped."),
     company_name: z.string().optional().describe("Improves matching when the brand differs from the domain stem, for example Gong for gong.io. Derived from the domain when left empty."),
     years: z.string().optional().describe("Comma separated, for example 2025,2026. Events dated outside this set are still returned and flagged. Sent as a string so it works from Clay. Default: \"2025,2026\"."),
